@@ -21,14 +21,9 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/campground", async (req, res) => {
-  const camp = new Campground({
-    title: "My backyard",
-    price: 5,
-    description: "cheap camping",
-  });
-  await camp.save();
-  res.send(camp);
+app.get("/campgrounds", async (req, res) => {
+  const campgrounds = await Campground.find({});
+  res.render("campgrounds/index", { campgrounds });
 });
 
 app.listen(3000, () => {
