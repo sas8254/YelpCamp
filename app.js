@@ -4,6 +4,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/ExpressError");
 
 const mongoose = require("mongoose");
 const Campground = require("./models/campground");
@@ -85,8 +86,14 @@ app.delete(
   })
 );
 
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page not found", 404));
+});
+
 app.use((err, req, res, next) => {
-  res.send("Something went wrong");
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Something went wrong";
+  res.status(statusCode).render("error", { err });
 });
 
 app.listen(3000, () => {
