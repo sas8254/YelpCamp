@@ -8,6 +8,9 @@ const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
 const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/reviews");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/users");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -42,6 +45,13 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -51,11 +61,15 @@ app.use((req, res, next) => {
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
+app.get("/fakeuser", async (req, res) => {
+  const user = new User({ username: "sam", email: "sam@gmail.com" });
+  const fullUser = await User.register(user, "monkey");
+  res.send(fullUser);
+});
+
 app.get("/", (req, res) => {
   res.render("home");
 });
-
-
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found", 404));
