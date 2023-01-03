@@ -8,6 +8,7 @@ const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
 const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/reviews");
+const userRoutes = require("./routes/users");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/users");
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
+app.use("/", userRoutes);
 
 app.get("/fakeuser", async (req, res) => {
   const user = new User({ username: "sam", email: "sam@gmail.com" });
