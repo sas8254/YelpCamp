@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/users");
 const passport = require("passport");
+const { reviewSchema } = require("../schemas");
 
 router.get("/register", (req, res) => {
   res.render("users/register");
@@ -35,5 +36,15 @@ router.post(
     res.redirect("/campgrounds");
   }
 );
+
+router.get("/logout", (req, res) => {
+  req.logOut((err) => {
+    if (err) {
+      return next(err);
+    }
+    req.flash("success", "Goodbye!");
+    res.redirect("/campgrounds");
+  });
+});
 
 module.exports = router;
