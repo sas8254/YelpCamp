@@ -45,14 +45,6 @@ module.exports.places = [
 
 module.exports.images = [
   {
-    url: "https://res.cloudinary.com/dwkrtdkxt/image/upload/v1673185298/YelpCamp/xgllqbo7rdx2fncedhgb.jpg",
-    filename: "YelpCamp/xgllqbo7rdx2fncedhgb",
-  },
-  {
-    url: "https://res.cloudinary.com/dwkrtdkxt/image/upload/v1673185299/YelpCamp/stf2masnfd9y8t5v4pry.jpg",
-    filename: "YelpCamp/stf2masnfd9y8t5v4pry",
-  },
-  {
     url: "https://res.cloudinary.com/dwkrtdkxt/image/upload/v1673186575/YelpCamp/ft3bv1zrypi1t9mg4ca0.jpg",
     filename: "YelpCamp/ft3bv1zrypi1t9mg4ca0",
   },
