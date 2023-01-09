@@ -48,6 +48,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
+  console.log(req.body);
   const images = req.files.map((f) => {
     return { url: f.path, filename: f.filename };
   });
