@@ -26,7 +26,10 @@ const seedDB = async () => {
       title: `${sample(descriptors)} ${sample(places)}`,
       geometry: {
         type: "Point",
-        coordinates: [88.4279839665475, 27.5573425882475],
+        coordinates: [
+          cities[random1000].longitude,
+          cities[random1000].latitude,
+        ],
       },
       images: [{ url: image.url, filename: image.filename }],
       price: Math.floor(Math.random() * 20 + 10),
