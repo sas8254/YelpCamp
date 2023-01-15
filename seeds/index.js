@@ -21,6 +21,9 @@ const seedDB = async () => {
   for (let i = 0; i < 250; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const image = sample(images);
+    // user_id = "63b3f257c5f19c7d90c3d1ef" // laptop
+    // user_id = "63b30714bc65da292b7b6389" // Desktop
+
     const camp = new Campground({
       author: "63b3f257c5f19c7d90c3d1ef",
       title: `${sample(descriptors)} ${sample(places)}`,
