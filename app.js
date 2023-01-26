@@ -21,8 +21,9 @@ const helmet = require("helmet");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/yelpcamp_v1";
 mongoose
-  .connect("mongodb://127.0.0.1:27017/yelpcamp_v1")
+  .connect(dbUrl)
   .then(() => {
     console.log("mongo connection open");
   })

@@ -1,10 +1,16 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const mongoose = require("mongoose");
 const Campground = require("../models/campground");
 const cities = require("./cities");
 const { places, descriptors, images } = require("./seedHelpers");
 mongoose.set("strictQuery", false);
+
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/yelpcamp_v1";
 mongoose
-  .connect("mongodb://127.0.0.1:27017/yelpcamp_v1")
+  .connect(dbUrl)
   .then(() => {
     console.log("mongo connection open");
   })
@@ -23,9 +29,10 @@ const seedDB = async () => {
     const image = sample(images);
     // user_id = "63b3f257c5f19c7d90c3d1ef" // laptop
     // user_id = "63b30714bc65da292b7b6389" // Desktop
+    // user_id = "6381e5a4147f6271c4b38c14" // Atlas
 
     const camp = new Campground({
-      author: "63b3f257c5f19c7d90c3d1ef",
+      author: "6381e5a4147f6271c4b38c14",
       title: `${sample(descriptors)} ${sample(places)}`,
       geometry: {
         type: "Point",
