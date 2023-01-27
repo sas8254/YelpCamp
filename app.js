@@ -18,6 +18,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/users");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
+const MongoStore = require("connect-mongo");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -88,9 +89,20 @@ app.use(
   })
 );
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  secret: "donttelltoanyonse",
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR", e);
+});
+
 const sessionConfig = {
+  store,
   name: "session",
-  secret: "theSecret",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -141,6 +153,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(4000, () => {
-  console.log("Serving on port 4000!");
+const port = process.env.port || 4000;
+
+app.listen(port, () => {
+  console.log(`Serving on port ${port}!`);
 });
