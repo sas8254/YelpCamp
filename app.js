@@ -133,11 +133,11 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 app.use("/", userRoutes);
 
-app.get("/fakeuser", async (req, res) => {
-  const user = new User({ username: "sam", email: "sam@gmail.com" });
-  const fullUser = await User.register(user, "monkey");
-  res.send(fullUser);
-});
+// app.get("/fakeuser", async (req, res) => {
+//   const user = new User({ username: "sam", email: "sam@gmail.com" });
+//   const fullUser = await User.register(user, "monkey");
+//   res.send(fullUser);
+// });
 
 app.get("/", (req, res) => {
   res.render("campgrounds/home");
