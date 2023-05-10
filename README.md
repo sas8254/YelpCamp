@@ -28,7 +28,7 @@ YelpCamp is a comprehensive web application project focused around sharing campg
 
 **New Campground Page**
 
-![New Campground](./images/new_campground.png)
+![New Campground](./images/new campground.png)
 
 **Campgrounds List**
 
@@ -82,4 +82,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-``
