@@ -28,7 +28,7 @@ YelpCamp is a comprehensive web application project focused around sharing campg
 
 **New Campground Page**
 
-![New Campground](./images/new campground.png)
+![New Campground](./images/newcampground.png)
 
 **Campgrounds List**
 
