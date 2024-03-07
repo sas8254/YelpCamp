@@ -1,6 +1,6 @@
 # YelpCamp
 
-YelpCamp is a comprehensive web application project focused around sharing campgrounds. Built with Node.js, Express, EJS, MongoDB Atlas, and other technologies, it allows users to create, edit, delete, rate and review campgrounds. Try the live demo [here](https://yelpcamp-ah2x.onrender.com/).
+YelpCamp is a comprehensive web application project focused on sharing campgrounds. Built with Node.js, Express, EJS, MongoDB Atlas, and other technologies, it allows users to create, edit, delete, rate and review campgrounds. Try the live demo [here](https://yelpcamp-ah2x.onrender.com/).
 
 ![Home Page](./images/home.png)
 
@@ -15,6 +15,7 @@ YelpCamp is a comprehensive web application project focused around sharing campg
 - RESTful API design
 - Flash messages for user interaction
 - Session handling for user login persistence
+- camp maps and cluster maps using Mapbox
 
 ## Screenshots
 
@@ -63,13 +64,17 @@ YelpCamp is a comprehensive web application project focused around sharing campg
 1. Clone this repo on your local machine
 2. Install the dependencies: 
 3. Create a `.env` file in the root directory and fill in your environment variables
-
+   
+```
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_KEY=your_cloudinary_key
 CLOUDINARY_SECRET=your_cloudinary_secret
 MAPBOX_TOKEN=your_mapbox_token
 DATABASE_URL=your_mongodb_atlas_database_url
 SECRET=your_session_secret
+DB_URL=your_mongodb_or_mongodb_atlas_url
+MAPBOX_TOKEN=your_mapbox_token
+```
 
 4. Start the server:
 
